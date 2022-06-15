@@ -1,6 +1,6 @@
 function outf(text) {
     var mypre = document.getElementById("output");
-    mypre.innerHTML = mypre.innerHTML + text;
+    mypre.value = mypre.value + text;
 }
 function builtinRead(x) {
     if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
@@ -11,7 +11,7 @@ function builtinRead(x) {
 function runit() {
     var prog = editor.getValue();
     var mypre = document.getElementById("output");
-    mypre.innerHTML = '';
+    mypre.value = '';
     Sk.pre = "output";
     Sk.configure({
         inputfun: function (prompt) {
@@ -29,7 +29,7 @@ function runit() {
         console.log('success');
     },
         function (err) {
-            mypre.innerHTML = mypre.innerHTML + err.toString();
+            mypre.value = mypre.value + err.toString();
             console.log(err.toString());
         });
 };
@@ -42,7 +42,7 @@ document.addEventListener('keydown', (event) => {
         var t1 = (new Date()).getTime()
         var mypre = document.getElementById("output");
         mypre.style.display = 'block';
-        mypre.innerHTML = mypre.innerHTML + "&#13;&#10;" + "<completed in " + (t1 - t0) + " ms>";
+        mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "T") {
