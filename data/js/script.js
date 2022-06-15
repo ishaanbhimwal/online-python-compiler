@@ -94,7 +94,7 @@ editor.setOptions({
     enableLiveAutocompletion: true,
 });
 
-const params = new Proxy(new URLSearchParams(window.location.search), {
+var params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
 });
 
