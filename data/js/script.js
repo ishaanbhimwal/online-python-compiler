@@ -48,11 +48,11 @@ document.addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.shiftKey && event.key == "T") {
         event.preventDefault();
         var mypre = document.getElementById("output");
-        if (mypre.style.display !== 'none') {
-            mypre.style.display = 'none';
+        if (mypre.style.display !== 'block') {
+            mypre.style.display = 'block';
         }
         else {
-            mypre.style.display = 'block';
+            mypre.style.display = 'none';
         }
 
     }
@@ -62,11 +62,20 @@ document.addEventListener('keydown', (event) => {
         function copyToClipboard(text) {
             window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
         }
-        // var link = "https://ishaanbhimwal.github.io/online-python-compiler?code=" + encodeURIComponent(editor.getValue());
-        var link = "http://127.0.0.1:5500/index.html?code=" + encodeURIComponent(editor.getValue());
+        var link = "https://ishaanbhimwal.github.io/online-python-compiler?code=" + encodeURIComponent(editor.getValue());
         copyToClipboard(link);
     }
 
+    if (event.ctrlKey && event.shiftKey && event.key == "K") {
+        event.preventDefault();
+        var modal = document.getElementById("myModal");
+        if (modal.style.display !== 'block') {
+            modal.style.display = 'block';
+        }
+        else {
+            modal.style.display = 'none';
+        }
+    }
 
 });
 
@@ -76,8 +85,10 @@ editor.setTheme("ace/theme/cobalt");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
 document.getElementById("editor").style.fontSize = "14px";
+editor.commands.removeCommand('findprevious');
 ace.require("ace/ext/language_tools");
 editor.setOptions({
+    fontSize: "14px",
     enableBasicAutocompletion: true,
     enableSnippets: true,
     enableLiveAutocompletion: true,
@@ -90,3 +101,6 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 if (params.code != null) {
     editor.setValue(params.code);
 };
+
+var mypre = document.getElementById("output");
+mypre.style.display = 'none';
