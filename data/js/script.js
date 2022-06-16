@@ -88,10 +88,16 @@ document.addEventListener('keydown', (event) => {
         }
     }
 
+    if (event.ctrlKey && event.shiftKey && event.key == "F") {
+        event.preventDefault();
+        beautify.beautify(editor.session);
+    }
+
 });
 
 
 var editor = ace.edit("editor");
+var beautify = ace.require("ace/ext/beautify");
 editor.setTheme("ace/theme/cobalt");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
