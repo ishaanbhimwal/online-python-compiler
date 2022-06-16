@@ -77,6 +77,15 @@ document.addEventListener('keydown', (event) => {
         }
     }
 
+    if (event.ctrlKey && event.shiftKey && event.key == "D") {
+        event.preventDefault();
+        var prog = editor.getValue();
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:attachment/text,' + encodeURI(prog);
+        hiddenElement.download = 'download.py';
+        hiddenElement.click();
+    }
+
 });
 
 
@@ -86,6 +95,7 @@ editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
 document.getElementById("editor").style.fontSize = "14px";
 editor.commands.removeCommand('findprevious');
+editor.commands.removeCommand('duplicateSelection');
 ace.require("ace/ext/language_tools");
 editor.setOptions({
     fontSize: "14px",
