@@ -41,9 +41,10 @@ pre,
 }
 
 .modal-content {
-    background-color: white;
+    background-color: black;
+    color: white;
     margin: 15% auto;
-    padding: 10px;
-    border: 1px solid black;
-    width: 500px;
+    padding: 20px;
+    border: 1px solid white;
+    width: 400px;
 }

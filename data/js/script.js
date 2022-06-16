@@ -98,7 +98,7 @@ document.addEventListener('keydown', (event) => {
 
 var editor = ace.edit("editor");
 var beautify = ace.require("ace/ext/beautify");
-editor.setTheme("ace/theme/cobalt");
+editor.setTheme("ace/theme/merbivore_soft");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
 document.getElementById("editor").style.fontSize = "14px";
