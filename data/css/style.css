@@ -1,4 +1,13 @@
 @font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('data/fonts/source-sans-pro-v21-latin-regular.woff2') format('woff2'),
+        url('data/fonts/source-sans-pro-v21-latin-regular.woff') format('woff');
+}
+
+@font-face {
     font-family: 'Source Code Pro';
     font-style: normal;
     font-weight: 400;
@@ -19,24 +28,24 @@
 
 #editor,
 #output {
-    flex: 1;
-}
-
-pre,
-#editor,
-#output,
-.modal,
-.modal-content {
     font-family: 'Source Code Pro', monospace;
-    font-size: 14px;
+    font-size: 15px;
+    flex: 1;
 }
 
 #output {
     background-color: #1C1C1C;
-    color: #FFFFFF;
+    color: palegreen;
     border: 1px solid black;
     outline: 1px solid black;
     resize: none;
+}
+
+pre,
+#modal,
+.modal-content {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
 }
 
 .modal {
@@ -55,5 +64,5 @@ pre,
     margin: 15% auto;
     padding: 20px;
     border: 1px solid white;
-    width: 400px;
+    width: 350px;
 }

@@ -45,7 +45,7 @@ document.addEventListener('keydown', (event) => {
         mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
     }
 
-    if (event.ctrlKey && event.shiftKey && event.key == "T") {
+    if (event.ctrlKey && event.shiftKey && event.key == "E") {
         event.preventDefault();
         var mypre = document.getElementById("output");
         if (mypre.style.display !== 'block') {
