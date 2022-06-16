@@ -83,7 +83,9 @@ document.addEventListener('keydown', (event) => {
         var hiddenElement = document.createElement('a');
         hiddenElement.href = 'data:attachment/text,' + encodeURI(prog);
         hiddenElement.download = 'download.py';
-        hiddenElement.click();
+        if (confirm('Download file?')) {
+            hiddenElement.click();
+        }
     }
 
 });
