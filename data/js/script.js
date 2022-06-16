@@ -100,6 +100,7 @@ editor.commands.removeCommand('findprevious');
 editor.commands.removeCommand('duplicateSelection');
 ace.require("ace/ext/language_tools");
 editor.setOptions({
+    fontFamily: "Source Code Pro",
     fontSize: "14px",
     enableBasicAutocompletion: true,
     enableSnippets: true,
