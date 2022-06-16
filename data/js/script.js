@@ -62,7 +62,7 @@ document.addEventListener('keydown', (event) => {
         function copyToClipboard(text) {
             window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
         }
-        var link = "https://ishaanbhimwal.github.io/online-python-compiler?code=" + encodeURIComponent(editor.getValue());
+        var link = window.location.href.split('?')[0] + "?code=" + encodeURIComponent(editor.getValue());
         copyToClipboard(link);
     }
 
