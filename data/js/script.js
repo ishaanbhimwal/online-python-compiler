@@ -44,12 +44,20 @@ function toggleOutput() {
     }
 }
 
-function copyToClipboard(text) {
-    window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+function copyToClipboard() {
+    var download_id = document.getElementById("download_id");
+    if (download_id.style.display !== 'block') {
+        download_id.style.display = 'block';
+    }
+    else {
+        download_id.style.display = 'none';
+    }
+    var link = window.location.href.split('?')[0] + "?code=" + encodeURIComponent(editor.getValue());
+    navigator.clipboard.writeText(link);
 }
 
 function kb() {
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("kb_id");
     if (modal.style.display !== 'block') {
         modal.style.display = 'block';
     }
@@ -63,7 +71,7 @@ function download() {
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(prog);
     hiddenElement.download = 'download.py';
-    if (confirm('Download file?')) {
+    if (confirm('Download Code?')) {
         hiddenElement.click();
     }
 }
@@ -87,8 +95,7 @@ document.addEventListener('keydown', (event) => {
 
     if (event.ctrlKey && event.shiftKey && event.key == "S") {
         event.preventDefault();
-        var link = window.location.href.split('?')[0] + "?code=" + encodeURIComponent(editor.getValue());
-        copyToClipboard(link);
+        copyToClipboard();
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "K") {
