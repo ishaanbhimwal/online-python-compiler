@@ -104,6 +104,7 @@ editor.setShowPrintMargin(false);
 document.getElementById("editor").style.fontSize = "14px";
 editor.commands.removeCommand('findprevious');
 editor.commands.removeCommand('duplicateSelection');
+editor.commands.removeCommand('replaymacro');
 ace.require("ace/ext/language_tools");
 editor.setOptions({
     fontFamily: "Source Code Pro",
