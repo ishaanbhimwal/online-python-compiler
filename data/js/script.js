@@ -45,45 +45,21 @@ function toggleOutput() {
 }
 
 function copyToClipboard() {
-    var copy_id = document.getElementById("copy_id");
-    if (copy_id.style.display !== 'block') {
-        copy_id.style.display = 'block';
-    }
-    else {
-        copy_id.style.display = 'none';
-    }
     var link = window.location.href.split('?')[0] + "?code=" + encodeURIComponent(editor.getValue());
-    navigator.clipboard.writeText(link);
+    window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
 }
 
 function kb() {
-    var modal = document.getElementById("kb_id");
-    if (modal.style.display !== 'block') {
-        modal.style.display = 'block';
-    }
-    else {
-        modal.style.display = 'none';
-    }
+    window.alert("Run Code : Ctrl+Enter\nToggle Output : Ctrl+Shift+E\nShare Code : Ctrl+Shift+S\nToggle Keyboard Shortcuts : Ctrl+Shift+K\nEditor Settings : Ctrl+,\nDownload Code : Ctrl+Shift+D\nBeautify Code : Ctrl+Shift+F")
 }
 
-function download_modal() {
-    var download_id = document.getElementById("download_id");
-    if (download_id.style.display !== 'block') {
-        download_id.style.display = 'block';
-    }
-    else {
-        download_id.style.display = 'none';
-    }
-}
-
-function download () {
+function download() {
     var prog = editor.getValue();
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(prog);
     hiddenElement.download = 'download.py';
     if (confirm('Download Code?')) {
         hiddenElement.click();
-        download_modal();
     }
 }
 
@@ -129,7 +105,7 @@ document.addEventListener('keydown', (event) => {
 
 var editor = ace.edit("editor");
 var beautify = ace.require("ace/ext/beautify");
-editor.setTheme("ace/theme/merbivore_soft");
+editor.setTheme("ace/theme/tomorrow_night");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
 document.getElementById("editor").style.fontSize = "14px";
