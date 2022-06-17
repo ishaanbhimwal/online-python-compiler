@@ -45,12 +45,12 @@ function toggleOutput() {
 }
 
 function copyToClipboard() {
-    var download_id = document.getElementById("download_id");
-    if (download_id.style.display !== 'block') {
-        download_id.style.display = 'block';
+    var copy_id = document.getElementById("copy_id");
+    if (copy_id.style.display !== 'block') {
+        copy_id.style.display = 'block';
     }
     else {
-        download_id.style.display = 'none';
+        copy_id.style.display = 'none';
     }
     var link = window.location.href.split('?')[0] + "?code=" + encodeURIComponent(editor.getValue());
     navigator.clipboard.writeText(link);
