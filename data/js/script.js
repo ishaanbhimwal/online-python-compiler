@@ -66,13 +66,24 @@ function kb() {
     }
 }
 
-function download() {
+function download_modal() {
+    var download_id = document.getElementById("download_id");
+    if (download_id.style.display !== 'block') {
+        download_id.style.display = 'block';
+    }
+    else {
+        download_id.style.display = 'none';
+    }
+}
+
+function download () {
     var prog = editor.getValue();
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(prog);
     hiddenElement.download = 'download.py';
     if (confirm('Download Code?')) {
         hiddenElement.click();
+        download_modal();
     }
 }
 
