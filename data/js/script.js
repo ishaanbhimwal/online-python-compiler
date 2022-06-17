@@ -34,6 +34,40 @@ function runit() {
         });
 };
 
+function toggleOutput() {
+    var mypre = document.getElementById("output");
+    if (mypre.style.display !== 'block') {
+        mypre.style.display = 'block';
+    }
+    else {
+        mypre.style.display = 'none';
+    }
+}
+
+function copyToClipboard(text) {
+    window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+}
+
+function kb() {
+    var modal = document.getElementById("myModal");
+    if (modal.style.display !== 'block') {
+        modal.style.display = 'block';
+    }
+    else {
+        modal.style.display = 'none';
+    }
+}
+
+function download() {
+    var prog = editor.getValue();
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:attachment/text,' + encodeURI(prog);
+    hiddenElement.download = 'download.py';
+    if (confirm('Download file?')) {
+        hiddenElement.click();
+    }
+}
+
 document.addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.key == "Enter") {
         event.preventDefault();
@@ -47,45 +81,24 @@ document.addEventListener('keydown', (event) => {
 
     if (event.ctrlKey && event.shiftKey && event.key == "E") {
         event.preventDefault();
-        var mypre = document.getElementById("output");
-        if (mypre.style.display !== 'block') {
-            mypre.style.display = 'block';
-        }
-        else {
-            mypre.style.display = 'none';
-        }
+        toggleOutput();
 
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "S") {
         event.preventDefault();
-        function copyToClipboard(text) {
-            window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
-        }
         var link = window.location.href.split('?')[0] + "?code=" + encodeURIComponent(editor.getValue());
         copyToClipboard(link);
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "K") {
         event.preventDefault();
-        var modal = document.getElementById("myModal");
-        if (modal.style.display !== 'block') {
-            modal.style.display = 'block';
-        }
-        else {
-            modal.style.display = 'none';
-        }
+        kb();
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "D") {
         event.preventDefault();
-        var prog = editor.getValue();
-        var hiddenElement = document.createElement('a');
-        hiddenElement.href = 'data:attachment/text,' + encodeURI(prog);
-        hiddenElement.download = 'download.py';
-        if (confirm('Download file?')) {
-            hiddenElement.click();
-        }
+        download();
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "F") {

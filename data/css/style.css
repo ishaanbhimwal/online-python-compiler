@@ -66,3 +66,15 @@ pre,
     border: 1px solid white;
     width: 350px;
 }
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  cursor: pointer;
+}
