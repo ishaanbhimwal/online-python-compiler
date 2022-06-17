@@ -15,6 +15,7 @@ body {
 #wrapper {
     display: flex;
     flex-direction: column;
+    width: 100vw;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -27,7 +28,6 @@ body {
     font-family: 'Source Code Pro', monospace;
     font-size: 15px;
     flex: 1;
-    width: 100vw;
 }
 
 #output {
