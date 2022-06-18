@@ -36,12 +36,13 @@ function runit() {
 
 function toggleOutput() {
     var mypre = document.getElementById("output");
-    if (mypre.style.display !== 'block') {
-        mypre.style.display = 'block';
-    }
-    else {
+    if (mypre.style.display !== 'none') {
         mypre.style.display = 'none';
     }
+    else {
+        mypre.style.display = 'block';
+    }
+    editor.resize()
 }
 
 function copyToClipboard() {
@@ -119,6 +120,7 @@ editor.setOptions({
     enableBasicAutocompletion: true,
     enableSnippets: true,
     enableLiveAutocompletion: true,
+    autoScrollEditorIntoView: true,
 });
 
 var params = new Proxy(new URLSearchParams(window.location.search), {
@@ -129,5 +131,4 @@ if (params.code != null) {
     editor.setValue(params.code);
 };
 
-var mypre = document.getElementById("output");
-mypre.style.display = 'none';
+toggleOutput();
