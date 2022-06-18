@@ -106,7 +106,7 @@ document.addEventListener('keydown', (event) => {
 
 var editor = ace.edit("editor");
 var beautify = ace.require("ace/ext/beautify");
-editor.setTheme("ace/theme/tomorrow_night");
+editor.setTheme("ace/theme/cobalt");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
 editor.commands.removeCommand('findprevious');
