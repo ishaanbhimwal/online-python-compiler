@@ -25,7 +25,7 @@ function runit() {
     var myPromise = Sk.misceval.asyncToPromise(function () {
         return Sk.importMainWithBody("<stdin>", false, prog, true);
     });
-    myPromise.then(function (mod) {
+    myPromise.then(function () {
         console.log('success');
     },
         function (err) {
