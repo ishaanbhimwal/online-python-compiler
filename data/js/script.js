@@ -34,6 +34,15 @@ function runit() {
         });
 };
 
+function main() {
+    var t0 = (new Date()).getTime()
+        runit();
+        var t1 = (new Date()).getTime()
+        var mypre = document.getElementById("output");
+        mypre.style.display = 'block';
+        // mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
+}
+
 function toggleOutput() {
     var mypre = document.getElementById("output");
     if (mypre.style.display !== 'none') {
@@ -67,12 +76,7 @@ function download() {
 document.addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.key == "Enter") {
         event.preventDefault();
-        var t0 = (new Date()).getTime()
-        runit();
-        var t1 = (new Date()).getTime()
-        var mypre = document.getElementById("output");
-        mypre.style.display = 'block';
-        // mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
+        main();
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "E") {
