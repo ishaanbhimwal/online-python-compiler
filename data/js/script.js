@@ -109,7 +109,6 @@ var beautify = ace.require("ace/ext/beautify");
 editor.setTheme("ace/theme/tomorrow_night");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
-document.getElementById("editor").style.fontSize = "14px";
 editor.commands.removeCommand('findprevious');
 editor.commands.removeCommand('duplicateSelection');
 editor.commands.removeCommand('replaymacro');
