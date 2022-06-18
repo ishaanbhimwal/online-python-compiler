@@ -40,6 +40,7 @@ function main() {
         var t1 = (new Date()).getTime()
         var mypre = document.getElementById("output");
         mypre.style.display = 'block';
+        editor.resize()
         // mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
 }
 
