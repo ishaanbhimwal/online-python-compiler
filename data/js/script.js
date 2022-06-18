@@ -60,7 +60,7 @@ function copyToClipboard() {
 }
 
 function kb() {
-    window.alert("Run Code : Ctrl+Enter\nToggle Output : Ctrl+Shift+E\nShare Code : Ctrl+Shift+S\nToggle Keyboard Shortcuts : Ctrl+Shift+K\nEditor Settings : Ctrl+,\nDownload Code : Ctrl+Shift+D\nBeautify Code : Ctrl+Shift+F")
+    window.alert("Run Code : Ctrl+Enter\nToggle Output : Ctrl+Shift+E\nShare Code : Ctrl+Shift+S\nToggle Keyboard Shortcuts : Ctrl+Shift+K\nEditor Settings : Ctrl+,\nDownload Code : Ctrl+Shift+D")
 }
 
 function download() {
