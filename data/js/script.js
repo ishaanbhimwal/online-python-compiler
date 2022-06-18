@@ -100,16 +100,10 @@ document.addEventListener('keydown', (event) => {
         download();
     }
 
-    if (event.ctrlKey && event.shiftKey && event.key == "F") {
-        event.preventDefault();
-        beautify.beautify(editor.session);
-    }
-
 });
 
 
 var editor = ace.edit("editor");
-var beautify = ace.require("ace/ext/beautify");
 editor.setTheme("ace/theme/cobalt");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
@@ -119,7 +113,7 @@ editor.commands.removeCommand('replaymacro');
 ace.require("ace/ext/language_tools");
 editor.setOptions({
     fontFamily: "Source Code Pro",
-    fontSize: "14px",
+    fontSize: "15px",
     enableBasicAutocompletion: true,
     enableSnippets: true,
     enableLiveAutocompletion: true,
