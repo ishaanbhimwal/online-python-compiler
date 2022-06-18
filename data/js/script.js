@@ -72,7 +72,7 @@ document.addEventListener('keydown', (event) => {
         var t1 = (new Date()).getTime()
         var mypre = document.getElementById("output");
         mypre.style.display = 'block';
-        mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
+        // mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "E") {
