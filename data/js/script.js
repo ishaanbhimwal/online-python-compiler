@@ -9,6 +9,7 @@ function builtinRead(x) {
 }
 
 function runit() {
+    var t0 = (new Date()).getTime()
     var prog = editor.getValue();
     var mypre = document.getElementById("output");
     mypre.value = '';
@@ -27,20 +28,21 @@ function runit() {
     });
     myPromise.then(function (mod) {
         console.log('success');
+        var t1 = (new Date()).getTime()
+        mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
     },
         function (err) {
-            mypre.value = mypre.value + err.toString();
+            mypre.value = mypre.value + err.toString() + "\n";
             console.log(err.toString());
+            var t1 = (new Date()).getTime()
+            mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
         });
 };
 
 function main() {
-    var t0 = (new Date()).getTime()
     runit();
-    var t1 = (new Date()).getTime()
     var mypre = document.getElementById("output");
     mypre.style.display = 'block';
-    // mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
     editor.resize()
 }
 
