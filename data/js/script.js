@@ -36,12 +36,12 @@ function runit() {
 
 function main() {
     var t0 = (new Date()).getTime()
-        runit();
-        var t1 = (new Date()).getTime()
-        var mypre = document.getElementById("output");
-        mypre.style.display = 'block';
-        // mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
-        editor.resize()
+    runit();
+    var t1 = (new Date()).getTime()
+    var mypre = document.getElementById("output");
+    mypre.style.display = 'block';
+    // mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
+    editor.resize()
 }
 
 function toggleOutput() {
