@@ -59,7 +59,7 @@ body {
 .topnav a {
     float: left;
     color: white;
-    padding: 10px 10px;
+    padding: 8px;
     text-decoration: none;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
@@ -78,7 +78,7 @@ body {
 #github {
     padding: 0;
     margin: 5px;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
     float: right;
 }
