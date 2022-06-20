@@ -36,6 +36,9 @@ body {
 #output {
     font-family: 'Source Code Pro', monospace;
     font-size: 15px;
+}
+
+#editor {
     flex: 1;
 }
 
@@ -44,7 +47,8 @@ body {
     color: white;
     border: 1px solid black;
     outline: 1px solid black;
-    resize: none;
+    resize: vertical;
+    height: 35%;
 }
 
 .topnav {
