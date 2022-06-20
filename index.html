@@ -11,11 +11,28 @@
     <script src="data/js/ace-builds/src-noconflict/ext-language_tools.js" type="text/javascript"></script>
     <script src="data/js/skulpt/skulpt.js" type="text/javascript"></script>
     <script src="data/js/skulpt/skulpt-stdlib.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="data/css/style.css">
+    <link href="data/css/style.css" rel="stylesheet">
+    <link href="data/fonts/fontawesome-free-6.1.1-web/css/fontawesome.min.css" rel="stylesheet">
+    <link href="data/fonts/fontawesome-free-6.1.1-web/css/solid.min.css" rel="stylesheet">
+    <link href="data/fonts/fontawesome-free-6.1.1-web/css/brands.min.css" rel="stylesheet">
+
 </head>
 
 <body>
     <div id="wrapper">
+        <div class="topnav" id="myTopnav">
+            <a onclick="main()">Run</a>
+            <a onclick="toggleOutput()">Toggle Output</a>
+            <a onclick="copyToClipboard()">Share</a>
+            <a onclick="downloadCode()">Download</a>
+            <a onclick="kb()">Keyboard Shortcuts</a>
+            <a onclick="aceSettings()">Editor Settings</a>
+            <a id="github" href="https://github.com/ishaanbhimwal/online-python-compiler"><i
+                    class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0);" class="icon" onclick="resPanel()">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+        </div>
         <div id="editor"><pre>
 '''
 

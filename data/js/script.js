@@ -62,17 +62,30 @@ function copyToClipboard() {
     window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
 }
 
-function kb() {
-    window.alert("Run Code : Ctrl+Enter\nToggle Output : Ctrl+Shift+E\nShare Code : Ctrl+Shift+S\nToggle Keyboard Shortcuts : Ctrl+Shift+K\nEditor Settings : Ctrl+,\nDownload Code : Ctrl+Shift+D")
-}
-
-function download() {
+function downloadCode() {
     var prog = editor.getValue();
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:attachment/text,' + encodeURI(prog);
     hiddenElement.download = 'download.py';
     if (confirm('Download Code?')) {
         hiddenElement.click();
+    }
+}
+
+function kb() {
+    window.alert("Run : Ctrl+Enter\nToggle Output : Ctrl+Shift+E\nShare : Ctrl+Shift+S\nDownload : Ctrl+Shift+D\nKeyboard Shortcuts : Ctrl+Shift+K\nEditor Settings : Ctrl+,")
+}
+
+function aceSettings() {
+    editor.execCommand("showSettingsMenu")
+}
+
+function resPanel() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
     }
 }
 
@@ -93,21 +106,20 @@ document.addEventListener('keydown', (event) => {
         copyToClipboard();
     }
 
+    if (event.ctrlKey && event.shiftKey && event.key == "D") {
+        event.preventDefault();
+        downloadCode();
+    }
+
     if (event.ctrlKey && event.shiftKey && event.key == "K") {
         event.preventDefault();
         kb();
     }
 
-    if (event.ctrlKey && event.shiftKey && event.key == "D") {
-        event.preventDefault();
-        download();
-    }
-
 });
 
-
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/cobalt");
+editor.setTheme("ace/theme/tomorrow_night");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
 editor.commands.removeCommand('findprevious');
