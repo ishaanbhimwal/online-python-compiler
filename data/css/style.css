@@ -73,8 +73,8 @@ body {
 
 #github {
     padding: 0;
-    margin-right: 5px;
-    font-size: 30px;
+    margin: 5px;
+    font-size: 25px;
     color: white;
     float: right;
 }

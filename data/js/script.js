@@ -119,7 +119,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/tomorrow_night");
+editor.setTheme("ace/theme/merbivore_soft");
 editor.session.setMode("ace/mode/python");
 editor.setShowPrintMargin(false);
 editor.commands.removeCommand('findprevious');
