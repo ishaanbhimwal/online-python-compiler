@@ -143,9 +143,9 @@ if (params.code != null) {
     editor.setValue(params.code);
 };
 
-window.addEventListener('beforeunload', function (e) {
-    e.preventDefault();
-    e.returnValue = '';
+window.addEventListener('beforeunload', function (event) {
+    event.preventDefault();
+    event.returnValue = '';
 });
 
 toggleOutput();
