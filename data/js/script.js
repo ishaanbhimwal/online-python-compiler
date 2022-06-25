@@ -8,7 +8,7 @@ function builtinRead(x) {
     return Sk.builtinFiles["files"][x];
 }
 
-function runit() {
+function run() {
     var t0 = (new Date()).getTime()
     var prog = editor.getValue();
     var mypre = document.getElementById("output");
@@ -40,13 +40,29 @@ function runit() {
 };
 
 function main() {
-    runit();
+    run();
     var mypre = document.getElementById("output");
     mypre.style.display = 'block';
     editor.resize()
 }
 
-function toggleOutput() {
+function openFile() {
+    var files = input.files;
+    if (files.length == 0) return;
+
+    var file = files[0];
+    var reader = new FileReader();
+    reader.onload = (e) => {
+        var file = e.target.result;
+        var lines = file.split(/\r\n|\n/);
+        editor.setValue(lines.join('\n'));
+    };
+
+    reader.onerror = (e) => alert(e.target.error.name);
+    reader.readAsText(file);
+};
+
+function toggleConsole() {
     var mypre = document.getElementById("output");
     if (mypre.style.display !== 'none') {
         mypre.style.display = 'none';
@@ -55,11 +71,6 @@ function toggleOutput() {
         mypre.style.display = 'block';
     }
     editor.resize()
-}
-
-function copyToClipboard() {
-    var link = window.location.href.split('?')[0] + "?code=" + encodeURIComponent(editor.getValue());
-    window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
 }
 
 function downloadCode() {
@@ -72,8 +83,13 @@ function downloadCode() {
     }
 }
 
-function kb() {
-    window.alert("Run : Ctrl+Enter\nToggle Output : Ctrl+Shift+E\nShare : Ctrl+Shift+S\nDownload : Ctrl+Shift+D\nKeyboard Shortcuts : Ctrl+Shift+K\nEditor Settings : Ctrl+,")
+function shareCode() {
+    var link = window.location.href.split('?')[0] + "?code=" + encodeURIComponent(editor.getValue());
+    window.prompt("Copy link to clipboard: Ctrl+C, Enter", link);
+}
+
+function kbShortcuts() {
+    window.alert("Run : Ctrl+Enter\nConsole : Ctrl+Shift+E\nDownload : Ctrl+Shift+D\nShare : Ctrl+Shift+S\nKeyboard : Ctrl+Shift+K\nSettings : Ctrl+,")
 }
 
 function aceSettings() {
@@ -95,15 +111,20 @@ document.addEventListener('keydown', (event) => {
         main();
     }
 
+    if (event.ctrlKey && event.shiftKey && event.key == "O") {
+        event.preventDefault();
+        input.click()
+    }
+
     if (event.ctrlKey && event.shiftKey && event.key == "E") {
         event.preventDefault();
-        toggleOutput();
+        toggleConsole();
 
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "S") {
         event.preventDefault();
-        copyToClipboard();
+        shareCode();
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "D") {
@@ -113,7 +134,7 @@ document.addEventListener('keydown', (event) => {
 
     if (event.ctrlKey && event.shiftKey && event.key == "K") {
         event.preventDefault();
-        kb();
+        kbShortcuts();
     }
 
 });
@@ -143,9 +164,14 @@ if (params.code != null) {
     editor.setValue(params.code);
 };
 
+var input = document.querySelector('input')
+input.addEventListener('change', () => {
+    openFile();
+});
+
 window.addEventListener('beforeunload', function (event) {
     event.preventDefault();
     event.returnValue = '';
 });
 
-toggleOutput();
+toggleConsole();

@@ -22,12 +22,14 @@
     <div id="wrapper">
         <div class="topnav" id="myTopnav">
             <a onclick="main()">Run</a>
-            <a onclick="toggleOutput()">Toggle Output</a>
-            <a onclick="copyToClipboard()">Share</a>
+            <input type="file" />
+            <a onclick="document.querySelector('input').click()">Open</a>
+            <a onclick="toggleConsole()">Console</a>
             <a onclick="downloadCode()">Download</a>
-            <a onclick="kb()">Keyboard Shortcuts</a>
-            <a onclick="aceSettings()">Editor Settings</a>
-            <a id="github" href="https://github.com/ishaanbhimwal/online-python-compiler"><i
+            <a onclick="shareCode()">Share</a>
+            <a onclick="kbShortcuts()">Keyboard</a>
+            <a onclick="aceSettings()">Settings</a>
+            <a id="github" href="https://github.com/ishaanbhimwal/online-python-compiler" target="_blank"><i
                     class="fa-brands fa-github"></i></a>
             <a href="javascript:void(0);" class="icon" onclick="resPanel()">
                 <i class="fa-solid fa-bars"></i>

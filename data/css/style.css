@@ -119,3 +119,7 @@ body {
         float: left;
     }
 }
+
+input[type="file"] {
+    display: none;
+}
