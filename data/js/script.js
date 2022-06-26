@@ -165,7 +165,7 @@ editor.setOptions({
     autoScrollEditorIntoView: true,
 });
 
-var savedCode = localStorage['saveKey'] || 'defaultValue';
+var savedCode = localStorage['saveKey'];
 
 if (savedCode != ""){
     editor.setValue(savedCode);    
