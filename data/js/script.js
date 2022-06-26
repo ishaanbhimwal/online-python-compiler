@@ -73,6 +73,11 @@ function toggleConsole() {
     editor.resize()
 }
 
+function saveCode() {
+    localStorage['saveKey'] = editor.getValue();
+    window.alert("Code saved!")
+}
+
 function downloadCode() {
     var prog = editor.getValue();
     var hiddenElement = document.createElement('a');
@@ -89,7 +94,7 @@ function shareCode() {
 }
 
 function kbShortcuts() {
-    window.alert("Run : Ctrl+Enter\nConsole : Ctrl+Shift+E\nDownload : Ctrl+Shift+D\nShare : Ctrl+Shift+S\nKeyboard : Ctrl+Shift+K\nSettings : Ctrl+,")
+    window.alert("Run : Ctrl+Enter\nOpen : Ctrl+Shift+O\nConsole : Ctrl+Shift+E\nSave : Ctrl+Shift+S\nDownload : Ctrl+Shift+D\nShare : Ctrl+Shift+A\nKeyboard : Ctrl+Shift+K\nSettings : Ctrl+,")
 }
 
 function aceSettings() {
@@ -119,17 +124,21 @@ document.addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.shiftKey && event.key == "E") {
         event.preventDefault();
         toggleConsole();
-
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "S") {
         event.preventDefault();
-        shareCode();
+        saveCode();
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "D") {
         event.preventDefault();
         downloadCode();
+    }
+
+    if (event.ctrlKey && event.shiftKey && event.key == "A") {
+        event.preventDefault();
+        shareCode();
     }
 
     if (event.ctrlKey && event.shiftKey && event.key == "K") {
@@ -155,6 +164,12 @@ editor.setOptions({
     enableLiveAutocompletion: true,
     autoScrollEditorIntoView: true,
 });
+
+var savedCode = localStorage['saveKey'] || 'defaultValue';
+
+if (savedCode != ""){
+    editor.setValue(savedCode);    
+}
 
 var params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
