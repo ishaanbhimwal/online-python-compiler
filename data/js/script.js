@@ -26,14 +26,12 @@ function run() {
     var myPromise = Sk.misceval.asyncToPromise(function () {
         return Sk.importMainWithBody("<stdin>", false, prog, true);
     });
-    myPromise.then(function (mod) {
-        console.log('success');
+    myPromise.then(function () {
         var t1 = (new Date()).getTime()
         mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
     },
         function (err) {
             mypre.value = mypre.value + err.toString() + "\n";
-            console.log(err.toString());
             var t1 = (new Date()).getTime()
             mypre.value = mypre.value + "\n" + "<completed in " + (t1 - t0) + " ms>";
         });
@@ -167,7 +165,7 @@ editor.setOptions({
 
 var savedCode = localStorage['saveKey'] || 'defaultValue';
 
-if (savedCode != "defaultValue"){
+if (savedCode != "defaultValue") {
     editor.setValue(savedCode);
 }
 
