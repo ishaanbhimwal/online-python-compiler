@@ -165,10 +165,10 @@ editor.setOptions({
     autoScrollEditorIntoView: true,
 });
 
-var savedCode = localStorage['saveKey'];
+var savedCode = localStorage['saveKey'] || 'defaultValue';
 
-if (savedCode != ""){
-    editor.setValue(savedCode);    
+if (savedCode != "defaultValue"){
+    editor.setValue(savedCode);
 }
 
 var params = new Proxy(new URLSearchParams(window.location.search), {
